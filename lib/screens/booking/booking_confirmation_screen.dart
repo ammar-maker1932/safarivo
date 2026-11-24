@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import '../home/home_screen.dart';
 
 const Color confirmationPrimary = Color(0xFF102C35);
 const Color confirmationAccent = Color(0xFF18A999);
@@ -158,9 +159,12 @@ class BookingConfirmationScreen extends StatelessWidget {
                     height: 54,
                     child: FilledButton(
                       onPressed: () {
-                        Navigator.popUntil(
+                        Navigator.pushAndRemoveUntil(
                           context,
-                              (route) => route.isFirst,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                              (route) => false,
                         );
                       },
                       style: FilledButton.styleFrom(

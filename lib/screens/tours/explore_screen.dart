@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'tour_details_screen.dart';
+import '../../data/tour_data.dart';
 
 const Color explorePrimary = Color(0xFF102C35);
 const Color exploreAccent = Color(0xFF18A999);
@@ -27,44 +28,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
     'Nature',
   ];
 
-  final tours = [
-    {
-      'name': 'Hunza Valley Escape',
-      'location': 'Hunza, Gilgit-Baltistan',
-      'duration': '5 Days / 4 Nights',
-      'price': 'Rs. 28,500',
-      'category': 'Mountains',
-      'image':
-      'https://images.unsplash.com/photo-1501785888041-af3ef285b470',
-    },
-    {
-      'name': 'Skardu Adventure',
-      'location': 'Skardu, Gilgit-Baltistan',
-      'duration': '4 Days / 3 Nights',
-      'price': 'Rs. 32,000',
-      'category': 'Adventure',
-      'image':
-      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b',
-    },
-    {
-      'name': 'Naran Lake Retreat',
-      'location': 'Naran, KPK',
-      'duration': '3 Days / 2 Nights',
-      'price': 'Rs. 18,500',
-      'category': 'Lakes',
-      'image':
-      'https://images.unsplash.com/photo-1470770841072-f978cf4d019e',
-    },
-    {
-      'name': 'Fairy Meadows',
-      'location': 'Diamer, Gilgit-Baltistan',
-      'duration': '4 Days / 3 Nights',
-      'price': 'Rs. 25,000',
-      'category': 'Nature',
-      'image':
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba',
-    },
-  ];
+
+  final tours = safarivoTours;
+
 
   @override
   void dispose() {

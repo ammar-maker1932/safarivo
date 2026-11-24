@@ -4,6 +4,7 @@ import '../tours/explore_screen.dart';
 import '../wishlist/wishlist_screen.dart';
 import '../profile/profile_screen.dart';
 import '../bookings/my_bookings_screen.dart';
+import '../budget/smart_tour_finder_screen.dart';
 
 const Color homePrimary = Color(0xFF102C35);
 const Color homeAccent = Color(0xFF18A999);
@@ -52,6 +53,31 @@ class _HomeScreenState extends State<HomeScreen> {
           : selectedIndex == 2
           ? const MyBookingsScreen()
           : const ProfileScreen(),
+      floatingActionButton: selectedIndex == 0
+          ? FloatingActionButton(
+        backgroundColor: homeAccent,
+        foregroundColor: Colors.white,
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SmartTourFinderScreen(),
+            ),
+          );
+        },
+        child: const Icon(
+          Icons.auto_awesome_rounded,
+          size: 25,
+        ),
+      )
+          : null,
+
+      floatingActionButtonLocation:
+      FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white,
         indicatorColor: const Color(0xFFDDF2EB),
@@ -129,7 +155,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 14),
                   _buildTourBanner(),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 24),
+
                 ],
               ),
             ),
@@ -519,6 +546,88 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+
+  Widget _buildAIBudgetBanner() {
+    return Material(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(18),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SmartTourFinderScreen(),
+            ),
+          );
+        },
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(
+              color: const Color(0xFFE5ECE9),
+            ),
+          ),
+          child: Row(
+            children: [
+              Container(
+                height: 52,
+                width: 52,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFDDF2EB),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: const Icon(
+                  Icons.auto_awesome_rounded,
+                  color: homeAccent,
+                  size: 27,
+                ),
+              ),
+
+              const SizedBox(width: 15),
+
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'AI Trip Budget Estimator',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: homePrimary,
+                      ),
+                    ),
+                    SizedBox(height: 6),
+                    Text(
+                      'Estimate your travel expenses '
+                          'before booking your trip.',
+                      style: TextStyle(
+                        fontSize: 12,
+                        height: 1.5,
+                        color: homeMuted,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(width: 8),
+
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 16,
+                color: homeAccent,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
 
   Widget _buildPlaceholder() {
     final titles = [
